@@ -8,6 +8,7 @@ import { AntDesign, Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AppStackParams } from '../stacks/Main';
+import useLang from '../hooks/useLang';
 
 type Props = {
   itemKey: string
@@ -22,6 +23,7 @@ const Secret = (props: Props) => {
   const [toggle, setToggle] = useState<boolean>(false)
   const [secret, setSecret] = useState<string>("")
   const navigation = useNavigation<StackNavigationProp<AppStackParams>>()
+  const language = useLang()
 
   useEffect(() => {
     (async () => {
@@ -34,7 +36,7 @@ const Secret = (props: Props) => {
 
   const handleCopy = async () => {
     await Clipboard.setStringAsync(secret)
-    alert("Copied to Clipboard")
+    alert(language.copiedTo)
   }
 
   const showOrHide = () => {
@@ -42,10 +44,10 @@ const Secret = (props: Props) => {
       return (
         <Animated.View entering={FadeIn.duration(ANIMATION_BASE)} exiting={FadeOut.duration(ANIMATION_BASE)} className={"w-full pr-5"}>
           <View className='w-full px-3 py-3 rounded-md bg-neutral-100 dark:bg-neutral-900 flex-row items-center'>
+            <Text className='dark:text-white font-bold pr-2'>{secret}</Text>
             <TouchableOpacity onPress={handleCopy}>
               <Feather name="copy" size={16} color={Appearance.getColorScheme() === "dark" ? "white" : "black"}/>
             </TouchableOpacity>
-            <Text className='dark:text-white font-bold pl-2'>{secret}</Text>
           </View>
         </Animated.View>
       )
@@ -70,9 +72,6 @@ const Secret = (props: Props) => {
           </View>
           <View className='flex flex-row justify-center items-center'> 
             <Text className=' font-semibold text-neutral-300 dark:text-neutral-700'>{props.date.toLocaleUpperCase()}</Text>
-            {/* <TouchableOpacity>
-              <AntDesign name='delete' color={Appearance.getColorScheme() === "dark" ? "white" : "black"} size={15}/>
-            </TouchableOpacity> */}
           </View>
         </View>
         <View className='flex flex-row justify-start items-center w-full space-x-2 pt-5'>
