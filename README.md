@@ -1,4 +1,4 @@
-# Hush
+# Digikey
 A simple cross OS password manager.
 
 ## Features
