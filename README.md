@@ -5,5 +5,5 @@ A simple cross OS password manager.
 - Data is encrypted and stored locally on the device
 - Authentication required to enter the app
 - Quick search
-- Support for Spanish
+- En Español
 - Detailed animations
