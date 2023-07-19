@@ -1,6 +1,6 @@
 import Language from "../lang";
 
-export const acknowledgement = "Your data is encrypted and protected to ensure only you have access to your secrets. However, this means if your device is lost, stolen or broken, you cannot recover your secrets. This app is free, open source, and under the MIT Software License."
+export const acknowledgement = "Your data is encrypted and protected to ensure only you have access to your secrets. However, this means if your device is lost, stolen or broken, you cannot recover your secrets."
 
 export default <Language> {
     nameLabel: "Label",

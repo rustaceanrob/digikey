@@ -33,7 +33,7 @@ const Add = () => {
             return
         } 
         setDisabled(true)
-        const note: Note  = { name: name, date: (new Date()).toDateString(), isPinned: false,  id: byteString}
+        const note: Note  = { name: name, date: (new Date()).toDateString(),  id: byteString}
         try {
             const notes = await AsyncStorage.getItem(PATH_TO_REF)
             if (!notes) {
@@ -68,8 +68,8 @@ const Add = () => {
             <SafeAreaView className='flex flex-col w-full bg-white dark:bg-black h-screen justify-start items-start'>
                 <View className='p-5 w-full flex-row justify-between items-center'>
                     <TouchableOpacity onPress={() => navigation.goBack()} className='flex flex-row justify-start items-center bg-blue-500 px-2 py-2 rounded-md'>
-                            <AntDesign name="back" color={"white"} size={12}/>
-                            <Text className='text-white font-semibold pl-1'>{language.back}</Text>
+                        <AntDesign name="back" color={"white"} size={12}/>
+                        <Text className='text-white font-semibold pl-1'>{language.back}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity className='flex flex-row justify-start items-center bg-blue-500 px-2 py-2 rounded-md' onPress={handleSubmit} disabled={disabled}>
                         <AntDesign name="save" color={"white"} size={12}/>
@@ -77,7 +77,7 @@ const Add = () => {
                     </TouchableOpacity>
                 </View>
                 <View className='pl-5 pr-5 w-full'>
-                    <View className='border border-neutral-300 dark:border-neutral-700 px-5 py-5 rounded-md space-y-2'>
+                    <View className='border border-neutral-300 dark:border-neutral-700 px-5 py-5 rounded-md space-y-2 pb-7'>
                         <Text className='font-extrabold text-lg dark:text-white'>{language.nameLabel}</Text>
                         <View className='py-2 px-2 border border-neutral-300 dark:border-neutral-700 rounded-md bg-white dark:bg-black'>
                             <TextInput autoCorrect={false} onChangeText={(text) => setName(text)} className='dark:text-white'></TextInput>

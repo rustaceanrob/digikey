@@ -57,7 +57,7 @@ const Home = () => {
           <ScrollView className='w-full'>
             {
               notes.map((note, index) => {
-                return ( <Secret key={index} duration={index} itemKey={note.name} pinned={note.isPinned} date={note.date} itemId={note.id}/> )
+                return ( <Secret key={index} duration={index} itemKey={note.name} date={note.date} itemId={note.id}/> )
               })
             }
           </ScrollView>

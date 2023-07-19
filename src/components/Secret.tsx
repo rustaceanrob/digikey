@@ -15,7 +15,6 @@ type Props = {
   itemId: string
   date: string
   duration: number
-  pinned: boolean
 }
 
 
@@ -32,7 +31,7 @@ const Secret = (props: Props) => {
         setSecret(sec)
       }
     })()
-  }, [])
+  }, [props.itemId])
 
   const handleCopy = async () => {
     await Clipboard.setStringAsync(secret)

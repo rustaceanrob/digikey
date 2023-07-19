@@ -14,18 +14,17 @@ export default function useFetch(search: string) {
                 let notesStr = await AsyncStorage.getItem(PATH_TO_REF)
                 if (notesStr === null) return
                 let unpacked = JSON.parse(notesStr)
-                let pinned: Note[] = []
-                let unpinned: Note[] = []
+                let noteStack: Note[] = []
                 if (search === "") {
                     unpacked.forEach((note: Note) => {
-                        note.isPinned ?  pinned.push(note) :  unpinned.push(note)
+                        noteStack.push(note)
                     })
                 } else {
                     unpacked.filter((note: Note) => note.name.startsWith(search)).forEach((note: Note) => {
-                        note.isPinned ?  pinned.push(note) :  unpinned.push(note)
+                        noteStack.push(note)
                     })
                 }
-                setNotes([...pinned, ...unpinned])
+                setNotes([...noteStack])
             } catch {
                 setError(true)
             } finally {

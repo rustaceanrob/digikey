@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import * as LocalAuthentication from 'expo-local-authentication'
 import Unauth from '../screens/Unauth'
 import MainStack from '../stacks/Main'
+import { StatusBar } from 'expo-status-bar'
 
 const Root = () => {
     const [auth, setAuth] = useState(false)
@@ -18,6 +19,7 @@ const Root = () => {
     return (
         <NavigationContainer>
             {auth ? <MainStack/> : <Unauth/>}
+            <StatusBar style='auto'/>
         </NavigationContainer>
     )
 }
